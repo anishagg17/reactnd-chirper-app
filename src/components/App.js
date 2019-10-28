@@ -5,7 +5,7 @@ import Dashboard from './Dashboard'
 import NewTweet from './NewTweet'
 import TweetPage from './TweetPage'
 import Nav from './Nav'
-import {BrowserRouter,Route} from 'react-router-dom'
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 
 class App extends Component {
   state = {
@@ -23,12 +23,11 @@ class App extends Component {
       <Nav/>
       {this.state.l?<div>Still loding...</div>
         :
-        <div>
-            <Route path='/' exact component={Dashboard}/>
+        <Switch>
             <Route path='/tweet/:id' component={TweetPage}/>
             <Route path='/new'component={NewTweet}/>
-        </div>
-          
+            <Route path='/'  component={Dashboard}/>
+        </Switch>
       }
       </div>
       </BrowserRouter>
